@@ -15,21 +15,21 @@ def main():
   r = r.split('</td><td><a href="')
   r = r[1:len(r)]
   urls = []
-  for x in r:
-    if x[0:2] == '//':
-      x = 'https:' + x[0:len(x)]
-    elif x[0:2] =='./':
-      x = base + x[0:len(x)]
-    elif x[0:3] =='../':
-      x = ''
-    elif x[0] =='#':
-      x = ''
-    elif x[0] == '/':
-      x = base + x[0:len(x)]
+  for x in range(int(input('Amount of websites: '))):
+    if r[x][0:2] == '//':
+      r[x] = 'https:' + r[x][0:len(r[x])]
+    elif r[x][0:2] =='./':
+      r[x] = base + r[x][0:len(r[x])]
+    elif r[x][0:3] =='../':
+      r[x] = ''
+    elif (r[x][0] =='#')or(r[x][0] == 't'):
+      r[x] = ''
+    elif r[x][0] == '/':
+      r[x] = base + r[x][0:len(r[x])]
     c = ''
-    for y in range(len(x)):
-      if x[y] != '"':
-        c = c + x[y]
+    for y in range(len(r[x])):
+      if r[x][y] != '"':
+        c = c + r[x][y]
       else:
         urls.append(c)
         break

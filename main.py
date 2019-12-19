@@ -1,4 +1,4 @@
-import rank, get
+import rank, get, l
 
 
 rank.main()
@@ -9,3 +9,7 @@ for x in open('top','r+').read().split('\n'):
   get.main(x)
   m = open('all','w+')
   m.write(m.read()+'\n\n===\n\n'+open('results','r').read())
+
+
+
+l.main()
