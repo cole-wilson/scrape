@@ -1,7 +1,7 @@
-import config, rank, get, l, git
+import config,get
 
 if config.moz:
-  rank.main()
+  get.rank()
 c = 0
 for x in open('top','r+').read().split('\n'):
   c = c + 1
@@ -12,6 +12,5 @@ for x in open('top','r+').read().split('\n'):
 
 
 
-l.main()
-
-git.main()
+get.l()
+get.post()
