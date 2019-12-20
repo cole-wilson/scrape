@@ -15,7 +15,12 @@ def main():
   r = r.split('</td><td><a href="')
   r = r[1:len(r)]
   urls = []
-  for x in range(int(input('Amount of websites: '))):
+  q = input('Amount of websites: ')
+  if (q == 'a')or(q == 'all')or(q == 'al'):
+    amo = 500
+  else:
+    amo = q
+  for x in range(int(amo)):
     if r[x][0:2] == '//':
       r[x] = 'https:' + r[x][0:len(r[x])]
     elif r[x][0:2] =='./':
@@ -26,6 +31,10 @@ def main():
       r[x] = ''
     elif r[x][0] == '/':
       r[x] = base + r[x][0:len(r[x])]
+    elif r[x][0:3] == 'htt':
+      r[x] = r[x]
+    else:
+      r[x] = base + r[x]
     c = ''
     for y in range(len(r[x])):
       if r[x][y] != '"':

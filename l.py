@@ -8,23 +8,16 @@ def main():
 
   import requests, re
 
-  div = 1
+  #print('Total: ' + str(round(len(a)/div)))
 
-
-  import re
-  def special_match(strg, search=re.compile(r'[^a-z0-9.]')  .search):
-    return not bool(search(strg))
-
-  print('Total: ' + str(round(len(a)/div)))
-
-  for x in range(round(len(a)/div)):
-    print(x)
+  for x in range(len(a)):
+    print(str(x) + '/' + str(len(a)))
     #print(a[x])
     if a[x] != '':
       b = str(requests.get(a[x]).content).replace('b\'','') .replace('\\n','\n')
     else:
       b= ''
-    nonos = ['px','~','@','#','$','%','^','&','*','(',')','_','-','+','=','[',']','{','}','|','\\','\'','"',';',':','/','?','.','>',',']
+    nonos = ['0','1','2','3','4','5','6','7','8','9','px','~','@','#','$','%','^','&','*','(',')','_','-','+','=','[',']','{','}','|','\\','\'','"',';',':','/','?','.','>',',']
     for x in re.findall('>(.*?)<',b):
       if x != '':
         cs = x.split(' ')
@@ -86,5 +79,6 @@ def main():
   l = open('words','w+')
   for x in range(len(h)):
     l.write(h[x] + '\n')
+  l.close()
 
-  print(maxlen)
+  #print(maxlen)

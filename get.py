@@ -1,4 +1,7 @@
-import rank
+import rank, config
+
+startsplit = config.startsplit
+endsplit = config.endsplit
 
 
 a = []
@@ -12,7 +15,7 @@ def main(url):
   visited.append(url)
   base = url
   r = rank.g(base)
-  r = r.split('<a href="')
+  r = r.split(startsplit)
   r = r[1:len(r)]
   urls = []
   for x in r:
@@ -30,14 +33,14 @@ def main(url):
     c = ''
 
     for y in range(len(x)):
-      if x[y] != '"':
+      if x[y] != endsplit:
         c = c + x[y]
       else:
         urls.append(c)
         break
   
   for x in urls:
-    if (x not in a) and (x != '#') and (x != '#start-of-content') and (x != ''):
+    if (x not in a) and (x != '#') and (x != '#start-of-content') and (x != '') and ('mailto:' not in x) and ('tel:' not in x):
       a.append(x)
   f = open('results','w+')
   for x in a:
