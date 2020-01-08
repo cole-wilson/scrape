@@ -8,7 +8,7 @@
 
 
 
-bu = 'https://google.com/'
+bu = 'https://github.com/'
 
 
 
@@ -32,19 +32,20 @@ bu = 'https://google.com/'
 
 
 import requests, re, time
-sleep = 0.1
+sleep = 0
 
 au = []
 errors = []
 words = ''
+fc = open('fc.txt','w+')
+fc.write('```mermaid\ngraph TD\n')
 
 tab = 0
-maxdepth = int(input('What should the maximum length be?'))#1
+maxdepth = int(input('What should the maximum depth be?'))-2#1
 amo = 0
 class Page:
   def __init__(self, url):
     global amo
-    amo = amo + 1
     try:
       tmp = str(requests.get(url).content)
       tmp = tmp.replace('b\'','').replace('\\n','\n')
@@ -79,10 +80,13 @@ def main(base):
   global maxdepth
   global w
   global f
+  global fc
   global sleep
-  if tab > maxdepth:
+  global amo
+  if tab > maxdepth+1:
     return
   p = Page(base).content
+  amo = amo + 1
   domain = Page(base).domain
   urls = []
   for x in p.split('href="'):
@@ -104,6 +108,8 @@ def main(base):
     if x not in au:
       if x == '':
         continue
+      elif ('<' in x) or ('>' in x):
+        continue
       elif x[0] == '.':
         continue
       elif x[0:2] == '//':
@@ -114,12 +120,15 @@ def main(base):
         fi.append(x)
       elif x[0] == '<':
         continue
+      elif x[0] == ' ':
+        continue
       else:
         fi.append(base + x)
   #print(fi)
   for x in fi:
     au.append(x)
   for x in range(len(fi)):
+    fc.write(base + '-->' + fi[x] + '\n')
     if tab == 0:
       if x+1 == len(fi):
         print('└──' + str(x+1) + '/' + str(len(fi)))
@@ -135,7 +144,6 @@ def main(base):
       w.write(tabify() + '└──' + fi[x] + '\n')
       
     time.sleep(sleep)
-    w.write(tabify() + fi[x] + '\n')
     tab = tab + 1
     try:
       main(fi[x])
@@ -186,11 +194,12 @@ fl.sort(reverse=True)
 for x in fl:
   f.write(x + '\n')
 
-print('\n\n\n\n\n\n\n\n\nCollected about ' + str(amo) + ' pages, at depth ' + str(maxdepth) + '. The base url was ' + bu + '.')
+print('\n\n\n\n\n\n\n\n\nCollected about ' + str(amo) + ' pages, at depth ' + str(maxdepth+2) + '. The base url was ' + bu + '.')
 if len(errors) != 0:
   print('\nSome errors occured: ' + str(errors))
 else:
   print('\nNo errors occured.')
-
+fc.write('```')
+fc.close()
 f.close()
 w.close()
