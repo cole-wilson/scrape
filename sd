@@ -1,0 +1,65 @@
+graph LR
+https://google.com/-->https://www.google.com/imghp
+https://google.com/-->https://maps.google.com/maps
+https://google.com/-->https://play.google.com/
+https://google.com/-->https://www.youtube.com/
+https://google.com/-->https://news.google.com/nwshp
+https://google.com/-->https://mail.google.com/mail/
+https://google.com/-->https://drive.google.com/
+https://google.com/-->https://www.google.com/intl/en/about/products
+https://google.com/-->http://www.google.com/history/optout
+https://google.com/-->https://google.com//preferences
+https://google.com/-->https://accounts.google.com/ServiceLogin
+https://google.com/-->https://google.com//search
+https://google.com/-->https://google.com//advanced_search
+https://google.com/-->https://www.google.com/url
+https://google.com/-->https://google.com//intl/en/ads/
+https://google.com/-->https://google.com//services/
+https://google.com/-->https://google.com//intl/en/about.html
+https://google.com/-->https://google.com//intl/en/policies/privacy/
+https://google.com/-->https://google.com//intl/en/policies/terms/
+subgraph Depth 0
+https://google.com/
+end
+subgraph Depth 1
+https://www.google.com/imghp
+https://maps.google.com/maps
+https://play.google.com/
+https://www.youtube.com/
+https://news.google.com/nwshp
+https://mail.google.com/mail/
+https://drive.google.com/
+https://www.google.com/intl/en/about/products
+http://www.google.com/history/optout
+https://google.com//preferences
+https://accounts.google.com/ServiceLogin
+https://google.com//search
+https://google.com//advanced_search
+https://www.google.com/url
+https://google.com//intl/en/ads/
+https://google.com//services/
+https://google.com//intl/en/about.html
+https://google.com//intl/en/policies/privacy/
+https://google.com//intl/en/policies/terms/
+end
+subgraph Depth 2
+https://www.google.com/imghp --> Continue.
+https://maps.google.com/maps --> Continue.
+https://play.google.com/ --> Continue.
+https://www.youtube.com/ --> Continue.
+https://news.google.com/nwshp --> Continue.
+https://mail.google.com/mail/ --> Continue.
+https://drive.google.com/ --> Continue.
+https://www.google.com/intl/en/about/products --> Continue.
+http://www.google.com/history/optout --> Continue.
+https://google.com//preferences --> Continue.
+https://accounts.google.com/ServiceLogin --> Continue.
+https://google.com//search --> Continue.
+https://google.com//advanced_search --> Continue.
+https://www.google.com/url --> Continue.
+https://google.com//intl/en/ads/ --> Continue.
+https://google.com//services/ --> Continue.
+https://google.com//intl/en/about.html --> Continue.
+https://google.com//intl/en/policies/privacy/ --> Continue.
+https://google.com//intl/en/policies/terms/ --> Continue.
+end
